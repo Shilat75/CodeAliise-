@@ -1,0 +1,78 @@
+.right-sidebar {
+  float: right;
+  width: 300px;
+  margin: 40px 0px 15px 24px;
+  font-size: 15px;
+  position: fixed;
+  right:5px;
+}
+
+.widget {
+  margin-top: 10px;
+  box-shadow: 3px 3px 10px rgb(0 0 0 / 5%), -3px -3px 10px rgb(0 0 0 / 5%);
+}
+/*הכותרת בצד ימין האדומה */
+.widget h4 {
+  background-color: #6474E5;
+  margin: 0%;
+  padding: 15px;
+  color:#e3e6e8;
+  border: solid 1px rgb(51,51,51);
+  font-size: 13px;
+  
+}
+
+.right-sidebar-div-1 {
+  background-color: #FAF6F2;
+  padding: 15px;
+  border: solid 1px rgb(51,51,51);
+}
+
+.right-sidebar-div-1 .right-sidebar-div-2 {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-evenly;
+}
+
+.right-sidebar-div-1 .right-sidebar-div-2 p {
+  padding-left: 10px;
+  margin-top: 0%;
+  font-size: 13px;
+}
+
+.widget-tags {
+  margin-top: 40px;
+  box-shadow: 3px 3px 10px #6474E5, -3px -3px 10px #6474E5;
+}
+
+.widget-tags h4 {
+  margin: 0%;
+  padding: 15px;
+  background-color: #FAF6F2;
+  border: solid 1px rgb(51,51,51);
+  font-size: 13px;
+}
+
+.widget-tags-div {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-evenly;
+  border: solid 1px #e3e6e8;
+  padding: 10px;
+}
+
+.widget-tags-div p {
+  padding: 5px;
+  background-color: #6474E5;
+  color: white;
+  border-radius: 2px;
+  font-size: 13px;
+  border:solid 1px rgb(51,51,51);
+}
+
+@media screen and (max-width: 1020px) {
+  .right-sidebar {
+    display: none;
+  }
+}
