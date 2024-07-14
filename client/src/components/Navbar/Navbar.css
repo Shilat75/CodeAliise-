@@ -1,17 +1,37 @@
+:root {
+  --primary-color: #6474E5;
+  --secondary-color: #50E3C2;
+  --background-color: #FAF6F2;
+  --text-color: #333;
+  --border-color: #ccc;
+  --button-bg: #6474E5;
+  --button-hover-bg: #0086d8;
+  --button-color: #fff;
+  --tag-bg: rgba(229, 239, 240, 0.942);
+  --tag-border: #333;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
 .main-nav {
   min-height: 50px;
   width: 100%;
-  margin: 0% auto;
-  border-top: solid 3px #6474E5;
+  margin: 0 auto;
+  border-top: solid 3px var(--primary-color);
   box-shadow: 0px 1px 5px #00000033;
   position: fixed;
   z-index: 15;
-  top: 0%;
-  left: 0%;
-  background-color: #f8f9f9;
+  top: 0;
+  left: 0;
+  background-color: var(--background-color);
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.main-nav:hover {
+  background-color: #f1f1f1;
+  box-shadow: 0px 4px 10px #00000033;
 }
 
 .navbar {
@@ -24,7 +44,7 @@
 
 .slide-in-icon {
   display: none;
-  transition: 0.2s;
+  transition: transform 0.2s, background-color 0.2s;
   padding: 5px 6px 3px 6px;
   border-radius: 50%;
   background-color: inherit;
@@ -45,28 +65,49 @@
 
 .nav-logo {
   padding: 5px 0;
-  width: 100%;
-  text-align: center;}
-  
+  width: 100px;
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.nav-logo:hover {
+  transform: scale(1.1);
+}
 
 .nav-item {
-  margin: 0px 3px;
-  font-size: small;
+  margin: 5px 10px;
+  padding: 0px 30px;
+  font-size: medium;
   font-weight: 500;
   text-decoration: none;
-  color: rgb(69, 69, 69);
-  transition: 0.2s;
+  color: black;
+  transition: color 0.3s, text-shadow 0.3s;
+}
+
+.nav-item:hover {
+  color: var(--primary-color);
+  text-shadow: 1px 1px 2px var(--shadow-color);
 }
 
 .nav-btn {
   cursor: pointer;
   border-radius: 20px;
-  padding: 10px 20px;
+  padding: 5px 5px;
+  background-color: var(--button-bg);
+  color: black;
+  border: none;
+  transition: background-color 0.3s, transform 0.3s;
 }
 
-.nav-item:hover,
+.nav-btn:hover {
+  transform: scale(1.05);
+  color: black;
+  font-weight: bold;
+}
+
 .slide-in-icon:hover {
   background-color: rgb(226, 226, 226);
+  transform: rotate(90deg);
 }
 
 .navbar .navbar-1 form {
@@ -76,31 +117,45 @@
 }
 
 .navbar .navbar-1 form input {
-  min-width: 90%;
+  width: calc(100% - 80px); /* Adjusted width to prevent overlap */
   margin: 0;
-  padding: 8px 10px 8px 32px;
+  padding: 8px 28px 8px 52px; /* Adjusted padding to align with icon */
   font-size: 13px;
-  border: solid 1px #0000003e;
+  border: solid 1px var(--border-color);
   border-radius: 3px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  color: var(--text-color); /* Ensure text color is applied */
+}
+
+.navbar .navbar-1 form input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 5px var(--primary-color);
 }
 
 .navbar .navbar-1 form .search-icon {
   position: absolute;
-  left: 25px;
-  top: 8px;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: var(--text-color);
 }
 
 .nav-links {
-  padding: 7px 13px;
-  border: solid 1px rgb(69, 69, 69);
+  padding: 10px 20px;
+  border: solid 1px var(--text-color);
   border-radius: 3px;
-  background-color: #6474E5;
+  background-color: #4A90E2;
   cursor: pointer;
-  color: white;
+  color: var(--button-color);
+  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
 }
 
 .nav-links:hover {
-  box-shadow:0px 5px 10px  ;
+  background-color: #E1F5FE;
+  transform: translateY(-3px);
+  color: black;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
 }
 
 @media screen and (max-width: 1120px) {

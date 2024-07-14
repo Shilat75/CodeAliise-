@@ -29,7 +29,7 @@ const HomeMainbar = () => {
           <h1>All Questions</h1>
         )}
         <button onClick={checkAuth} className="ask-btn">
-          Ask Question
+          + Ask Question
         </button>
       </div>
       <div>

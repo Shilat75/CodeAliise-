@@ -22,7 +22,7 @@ app.use("/user", userRoutes);
 app.use("/questions", questionRoutes);
 app.use("/answer", answerRoutes);
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8200;
 
 app.listen(PORT, () => {
   console.log(`server running on port ${PORT}`);
