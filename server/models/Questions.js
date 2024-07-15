@@ -18,6 +18,7 @@ const QuestionSchema = mongoose.Schema({
       answeredOn: { type: Date, default: Date.now },
     },
   ],
+  answerAi: { type: [String], default: [] },
 });
 
 export default mongoose.model("Question", QuestionSchema);

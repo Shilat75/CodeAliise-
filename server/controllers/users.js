@@ -4,6 +4,7 @@ import users from "../models/auth.js";
 export const getAllUsers = async (req, res) => {
   try {
     const allUsers = await users.find();
+    
     const allUserDetails = [];
     allUsers.forEach((user) => {
       allUserDetails.push({
