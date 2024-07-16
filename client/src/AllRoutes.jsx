@@ -1,6 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 
+import App from "./Pages/LandingPage/App"; // Ensure correct path to App.jsx
 import Home from "./Pages/Home/Home";
 import Auth from "./Pages/Auth/Auth";
 import Questions from "./Pages/Questions/Questions";
@@ -13,10 +14,17 @@ import UserProfile from "./Pages/UserProfile/UserProfile";
 const AllRoutes = ({ slideIn, handleSlideIn }) => {
   return (
     <Routes>
+      {/* Landing Page */}
       <Route
         path="/"
+        element={<App slideIn={slideIn} handleSlideIn={handleSlideIn} />}
+      />
+      <Route
+        path="/Home"
         element={<Home slideIn={slideIn} handleSlideIn={handleSlideIn} />}
       />
+      
+      {/* Other Routes */}
       <Route path="/Auth" element={<Auth />} />
       <Route path="/AskQuestion" element={<AskQuestion />} />
       <Route

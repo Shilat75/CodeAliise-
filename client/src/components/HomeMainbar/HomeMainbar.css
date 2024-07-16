@@ -13,6 +13,7 @@
 }
 
 body {
+  animation: slideIn 0.2s;
   font-family: 'Arial', sans-serif;
   background-color: var(--background-color);
   color: var(--text-color);
@@ -183,5 +184,16 @@ body {
 
   .display-votes-ans {
     padding: 10px 0;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

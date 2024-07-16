@@ -13,6 +13,8 @@
 }
 
 .right-sidebar {
+  animation: slideIn 0.2s;
+
   float: right;
   width: 300px;
   margin: 40px 0 15px 24px;
@@ -20,6 +22,16 @@
   position: fixed;
   right: 5px;
   background-color: var(--background-color);
+}
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .widget {
