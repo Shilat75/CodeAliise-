@@ -32,7 +32,7 @@ const ChatGPTAnswer = ({ questionId }) => {
      
       <Markdown>{answer[0]}</Markdown>
     
-      <h3>Answer from ChatGPT</h3>
+      <h3>Answer from ChatGPT:</h3>
       <Markdown>{answer[1]}</Markdown>
     </div>
   );
