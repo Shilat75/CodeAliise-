@@ -13,10 +13,10 @@ API.interceptors.request.use((req) => {
   }
   return req;
 });
-
+//finction login&signup
 export const logIn = (authData) => API.post("/user/login", authData);
 export const signUp = (authData) => API.post("/user/signup", authData);
-
+//functionn question 
 export const postQuestion = (questionData) =>
   API.post("/questions/Ask", questionData);
 export const getAllQuestions = () => API.get("/questions/get");
@@ -32,3 +32,5 @@ export const deleteAnswer = (id, answerId, noOfAnswers) =>
 export const getAllUsers = () => API.get("/user/getAllUsers");
 export const updateProfile = (id, updateData) =>
   API.patch(`/user/update/${id}`, updateData);
+
+export const chatgptReq = (id) => API.post(`/chatgpt/chatgpt/${id}`);

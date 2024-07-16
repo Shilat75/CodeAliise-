@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './land.css';
 import { Button } from './Button';
-import videoSource from './v2.mp4'; // Import the video file
+import videoSource from './v1.mp4'; // Import the video file
 import Footer from './Footer'; // Import the Footer component
 
 function App() {

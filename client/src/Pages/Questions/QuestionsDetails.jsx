@@ -14,6 +14,7 @@ import {
   deleteQuestion,
   voteQuestion,
 } from "../../actions/question";
+import ChatGPTAnswer from '../../components/ChatGPTAnswer/ChatGPTAnswer';
 
 const QuestionsDetails = () => {
   const { id } = useParams();
@@ -145,6 +146,14 @@ const QuestionsDetails = () => {
                     </div>
                   </div>
                 </section>
+
+                <section>
+                    <h3> Answers ChatGPT </h3>
+                    <ChatGPTAnswer questionId={id}
+                      // key={question._id}
+                      // question={question}
+                    />
+                  </section>
                 {question.noOfAnswers !== 0 && (
                   <section>
                     <h3>{question.noOfAnswers} Answers</h3>

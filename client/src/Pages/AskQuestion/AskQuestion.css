@@ -1,56 +1,86 @@
 .ask-question {
   min-height: 80vh;
   background-color: #FAF6F2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
 }
 
 .ask-ques-container {
-  margin: auto;
-  padding: 0px 20px 20px 20px;
   max-width: 1200px;
+  width: 100%;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .ask-ques-container h1 {
-  padding: 80px 0px 20px 0px;
+  text-align: center;
+  padding: 20px 0;
 }
 
-.ask-ques-container form .ask-form-container {
+.ask-ques-container form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ask-form-container {
   padding: 20px;
-  border: solid 1px rgb(51,51,51);
-  background-color: #FAF6F2;
-  border-radius: 3px;
-  box-shadow: 0 10px 25px rgb(0 0 0 / 5%), 0 20px 48px rgb(0 0 0 / 5%),
-    0 1px 4px rgb(0 0 0 / 5%);
+  margin: 20px;
+  border: solid 1px #ddd;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ask-form-container label {
+  display: block;
+  margin-bottom: 10px;
 }
 
 .ask-form-container label h4 {
-  margin-bottom: 0%;
+  margin-bottom: 5px;
 }
 
 .ask-form-container label p {
-  margin: 0%;
+  margin: 0;
   font-size: 13px;
-  padding: 3px 0px;
+  color: #888;
 }
 
 .ask-form-container label input,
 .ask-form-container label textarea {
-  padding: 10px;
-  border: solid 1px #0000003e;
-  font-family: "Roboto", sans-serif;
   width: calc(100% - 20px);
-  resize: none;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-family: "Roboto", sans-serif;
+  transition: border-color 0.3s ease;
+}
+
+.ask-form-container label input:focus,
+.ask-form-container label textarea:focus {
+  outline: none;
+  border-color: #4a90e2;
 }
 
 .review-btn {
-  margin: 50px 0px;
-  padding: 10px;
-  background-color:#6474E5;
-  border: solid 1px rgb(51,51,51);
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #4A90E2;
+  border: none;
   color: white;
   border-radius: 4px;
   cursor: pointer;
-  transition: 0.3s;
+  transition: background-color 0.3s ease;
 }
+
 .review-btn:hover {
-  background-color: #9AA4EC;
+  background-color: #9aa4ec;
 }
