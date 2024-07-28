@@ -44,6 +44,7 @@ const LeftSidebar = ({ slideIn, handleSlideIn }) => {
               activeclassname="active"
               style={{ paddingLeft: "40px" }}
             >
+              <i class="bi bi-tags-fill"></i>
               <p>Tags</p>
             </NavLink>
           </button>

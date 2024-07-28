@@ -84,3 +84,6 @@
 .review-btn:hover {
   background-color: #9aa4ec;
 }
+.react-tags{
+max-width: 410px;
+}

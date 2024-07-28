@@ -33,4 +33,8 @@ export const getAllUsers = () => API.get("/user/getAllUsers");
 export const updateProfile = (id, updateData) =>
   API.patch(`/user/update/${id}`, updateData);
 
+export const getAllTags = () => API.get("/tag/tags");
+
+export const getMessages = (from,to) => API.get(`/message/messages/${from}/${to}`);
+
 export const chatgptReq = (id) => API.post(`/chatgpt/chatgpt/${id}`);
