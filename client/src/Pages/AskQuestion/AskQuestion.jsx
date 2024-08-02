@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 import "./AskQuestion.css";
 import { askQuestion } from "../../actions/question";
-
+import { TagsJson } from './tags.jsx';
 const AskQuestion = () => {
   const [questionTitle, setQuestionTitle] = useState("");
   const [questionBody, setQuestionBody] = useState("");
@@ -16,26 +16,34 @@ const AskQuestion = () => {
 
   useEffect(() => {
     let tags = [];
+    let tagsFromJSON = TagsJson.filter(x => questionTitle?.toLowerCase()?.includes(x?.Description?.toLocaleLowerCase()) || questionBody?.toLowerCase()?.includes(x?.Description?.toLocaleLowerCase())).map((tag) => {
+      return tag.Tags
+    })?.flat();
+    if (tagsFromJSON?.length > 0) {
+      tags = suggestions.filter(x => tagsFromJSON?.join(" ")?.toLowerCase()?.includes(x?.label?.toLowerCase()));
+    }
     var suggestionFromTitle = suggestions.filter(x => questionTitle?.toLocaleLowerCase().includes(x?.label?.toLowerCase()) && questionTitle != "");
     var suggestionFromDescription = suggestions.filter(x => questionBody?.toLocaleLowerCase().includes(x?.label?.toLowerCase()) && setQuestionBody != "");
     if (suggestionFromTitle?.length)
       tags = tags.concat(suggestionFromTitle);
     if (suggestionFromDescription?.length)
       tags = tags.concat(suggestionFromDescription);
+    tags = mergeLists(tagsForQuestions ?? [], tags ?? []);
 
     const _tags = Array.from(
       new Map(tags.map(tag => [tag.label, tag])).values()
     );
     setTagsForQuestions(_tags);
-
   }, [questionTitle, questionBody])
+
+  const mergeLists = (list1, list2) => {
+    const merged = [...list1, ...list2];
+    const unique = Array.from(new Map(merged.map(item => [item.value, item])).values());
+    return unique;
+  };
 
   const onAdd = useCallback(
     (newTag) => {
-      if (tagsForQuestions?.length == 5) {
-        alert("Already 5 Tags Added")
-        return;
-      }
       setTagsForQuestions([...tagsForQuestions, newTag])
 
     },
@@ -62,17 +70,6 @@ const AskQuestion = () => {
     var suggestiion = tags?.data?.map((tag) => { return { value: tag._id, label: tag.Name } });
     setSuggestions(suggestiion ?? [])
   }, [tags])
-
-  // const onInput = useCallback(
-  //   (key) => {
-  //     console.log(key, tags.data)
-
-  //     var suggestiion = key == "" ? [] : tags.data.map((tag) => { return { value: tag._id, label: tag.Name } })?.filter(x => x.label?.toLowerCase()?.includes(key?.toLowerCase()));
-  //     console.log(suggestiion)
-  //     setSuggestions(suggestiion ?? [])
-  //   },
-  //   [tags.data]
-  // )
 
   const handleSubmit = (e) => {
     e.preventDefault();
