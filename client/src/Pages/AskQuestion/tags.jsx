@@ -5,6 +5,6 @@ export const TagsJson = [
     },
     {
         Description: "frontend",
-        Tags: ["CSS", "HTML"]
+        Tags: ["CSS", "HTML","Angular"]
     }
 ]

@@ -148,7 +148,7 @@ const QuestionsDetails = () => {
                 </section>
 
                 <section>
-                    <h3> Answers ChatGPT </h3>
+                  
                     <ChatGPTAnswer questionId={id}
                       // key={question._id}
                       // question={question}
