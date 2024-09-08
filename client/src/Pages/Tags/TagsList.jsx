@@ -1,12 +1,23 @@
 import React from "react";
 import "./Tags.css";
+import { useSelector } from "react-redux";
 
-const TagsList = ({ tag }) => {
+
+const TagsList = () => {
+  const tags = useSelector((state) => state.tagsReducer);
   return (
-    <div className="tag">
-      <h5>{tag.tagName}</h5>
-      <p>{tag.tagDesc}</p>
-    </div>
+    <>
+      {
+        tags.data?.map((tag,index) => 
+        <div className="tag" key={index}>
+          <h5>{tag.Name}</h5>
+          <p>{tag.Description}</p>
+        </div>)
+      }
+
+    </>
+
+
   );
 };
 

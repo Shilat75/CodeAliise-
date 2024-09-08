@@ -41,13 +41,13 @@ const Navbar = ({ handleSlideIn }) => {
           <Link to="/" className="nav-item nav-logo">
               <h1>CodeAllies</h1>
           </Link>
-          <Link to="/" className="nav-item nav-btn res-nav">
+          <Link to="/About" className="nav-item nav-btn res-nav">
             About
           </Link>
-          <Link to="/" className="nav-item nav-btn res-nav">
+          <Link to="/Products" className="nav-item nav-btn res-nav">
             Products
           </Link>
-          <Link to="/" className="nav-item nav-btn res-nav">
+          <Link to="/Teams" className="nav-item nav-btn res-nav">
             For Teams
           </Link>
           <form>

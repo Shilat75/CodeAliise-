@@ -3,7 +3,6 @@ import React from "react";
 import LeftSidebar from "../../components/LeftSidebar/LeftSidebar";
 import TagsList from "./TagsList";
 import "./Tags.css";
-import { tagsList } from "./tagList";
 
 const Tags = ({ slideIn, handleSlideIn }) => {
   return (
@@ -20,9 +19,7 @@ const Tags = ({ slideIn, handleSlideIn }) => {
           your question.
         </p>
         <div className="tags-list-container">
-          {tagsList.map((tag, index) => (
-            <TagsList tag={tag} key={index} />
-          ))}
+            <TagsList />
         </div>
       </div>
     </div>

@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import "./HomeMainbar.css";
 import QuestionList from "./QuestionList";
+import v3 from "./v4.mp4"; 
 
 const HomeMainbar = () => {
   const location = useLocation();
@@ -22,6 +23,12 @@ const HomeMainbar = () => {
 
   return (
     <div className="main-bar">
+      {/* Background video */}
+      <video className="background-video" autoPlay loop muted>
+        <source src={v3} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      
       <div className="main-bar-header">
         {location.pathname === "/" ? (
           <h1>Top Questions</h1>
@@ -32,6 +39,7 @@ const HomeMainbar = () => {
           + Ask Question
         </button>
       </div>
+      
       <div>
         {questionsList.data === null ? (
           <h1>Loading...</h1>

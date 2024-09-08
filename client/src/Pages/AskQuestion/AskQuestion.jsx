@@ -1,23 +1,82 @@
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from 'react'
+import { ReactTags } from 'react-tag-autocomplete'
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import "./AskQuestion.css";
 import { askQuestion } from "../../actions/question";
-
+import { TagsJson } from './tags.jsx';
 const AskQuestion = () => {
   const [questionTitle, setQuestionTitle] = useState("");
   const [questionBody, setQuestionBody] = useState("");
-  const [questionTags, setQuestionTags] = useState("");
+  const [tagsForQuestions, setTagsForQuestions] = useState([]);
+  const [suggestions, setSuggestions] = useState([]);
+
+
+
+  useEffect(() => {
+    let tags = [];
+    let tagsFromJSON = TagsJson.filter(x => questionTitle?.toLowerCase()?.includes(x?.Description?.toLocaleLowerCase()) || questionBody?.toLowerCase()?.includes(x?.Description?.toLocaleLowerCase())).map((tag) => {
+      return tag.Tags
+    })?.flat();
+    if (tagsFromJSON?.length > 0) {
+      tags = suggestions.filter(x => tagsFromJSON?.join(" ")?.toLowerCase()?.includes(x?.label?.toLowerCase()));
+    }
+    var suggestionFromTitle = suggestions.filter(x => questionTitle?.toLocaleLowerCase().includes(x?.label?.toLowerCase()) && questionTitle != "");
+    var suggestionFromDescription = suggestions.filter(x => questionBody?.toLocaleLowerCase().includes(x?.label?.toLowerCase()) && setQuestionBody != "");
+    if (suggestionFromTitle?.length)
+      tags = tags.concat(suggestionFromTitle);
+    if (suggestionFromDescription?.length)
+      tags = tags.concat(suggestionFromDescription);
+    tags = mergeLists(tagsForQuestions ?? [], tags ?? []);
+
+    const _tags = Array.from(
+      new Map(tags.map(tag => [tag.label, tag])).values()
+    );
+    setTagsForQuestions(_tags);
+  }, [questionTitle, questionBody])
+
+  const mergeLists = (list1, list2) => {
+    const merged = [...list1, ...list2];
+    const unique = Array.from(new Map(merged.map(item => [item.value, item])).values());
+    return unique;
+  };
+
+  const onAdd = useCallback(
+    (newTag) => {
+      setTagsForQuestions([...tagsForQuestions, newTag])
+
+    },
+    [tagsForQuestions]
+  )
+
+  const onDelete = useCallback(
+    (index) => {
+      setTagsForQuestions(tagsForQuestions.filter((_, i) => i !== index))
+    },
+    [tagsForQuestions]
+  )
+
+
 
   const dispatch = useDispatch();
   const User = useSelector((state) => state.currentUserReducer);
+  const tags = useSelector((state) => state.tagsReducer);
+
+
   const navigate = useNavigate();
+
+  useEffect(() => {
+    var suggestiion = tags?.data?.map((tag) => { return { value: tag._id, label: tag.Name } });
+    setSuggestions(suggestiion ?? [])
+  }, [tags])
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (User) {
-      if (questionTitle && questionBody && questionTags) {
+      if (questionTitle && questionBody && tagsForQuestions) {
+        let questionTags = tagsForQuestions?.map(x => x.label);
+        debugger
         dispatch(
           askQuestion(
             {
@@ -79,14 +138,23 @@ const AskQuestion = () => {
             <label htmlFor="ask-ques-tags">
               <h4>Tags</h4>
               <p>Add up to 5 tags to describe what your question is about</p>
-              <input
-                type="text"
-                id="ask-ques-tags"
-                onChange={(e) => {
-                  setQuestionTags(e.target.value.split(" "));
-                }}
-                placeholder="e.g. (xml typescript wordpress)"
-              />
+              {
+                tags?.data?.length ?
+                  <ReactTags
+                    ariaDescribedBy="async-suggestions-description"
+                    id="async-suggestions-demo"
+                    labelText="Select characters"
+                    noOptionsText={'No characters found'}
+                    // onInput={onInput}
+                    onAdd={onAdd}
+                    onDelete={onDelete}
+                    placeholderText="Start typing..."
+                    selected={tagsForQuestions}
+                    suggestions={suggestions}
+                  />
+                  : <></>
+              }
+
             </label>
           </div>
           <input

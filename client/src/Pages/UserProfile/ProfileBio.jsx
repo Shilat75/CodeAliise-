@@ -1,6 +1,7 @@
 import React from "react";
-
-const ProfileBio = ({ currentProfile }) => {
+import ChatBox from '../../components/ChatBox/ChatBox';
+const ProfileBio = ({ currentProfile, currentUser }) => {
+  console.log(currentUser, currentProfile)
   return (
     <div>
       <div>
@@ -24,6 +25,11 @@ const ProfileBio = ({ currentProfile }) => {
         ) : (
           <p>No bio found</p>
         )}
+        {
+          (currentProfile != null && currentUser != null && currentUser?.result._id != currentProfile._id) &&
+          <ChatBox to={currentProfile} from={currentUser} ></ChatBox>
+        }
+
       </div>
     </div>
   );

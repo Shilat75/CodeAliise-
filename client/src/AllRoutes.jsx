@@ -10,6 +10,10 @@ import DisplayQuestion from "./Pages/Questions/DisplayQuestion";
 import Tags from "./Pages/Tags/Tags";
 import Users from "./Pages/Users/Users";
 import UserProfile from "./Pages/UserProfile/UserProfile";
+import About from "./Pages/About/About";
+import Products from "./Pages/Products/products"; // Import Products page
+import Teams from "./Pages/Teams/Teams"; // Import Products page
+
 
 const AllRoutes = ({ slideIn, handleSlideIn }) => {
   return (
@@ -50,6 +54,18 @@ const AllRoutes = ({ slideIn, handleSlideIn }) => {
         element={
           <UserProfile slideIn={slideIn} handleSlideIn={handleSlideIn} />
         }
+      />
+      <Route
+        path="/About"
+        element={<About slideIn={slideIn} handleSlideIn={handleSlideIn} />}
+      />
+      <Route
+        path="/Products"
+        element={<Products slideIn={slideIn} handleSlideIn={handleSlideIn} />} // Add Products route
+      />
+       <Route
+        path="/Teams"
+        element={<Teams slideIn={slideIn} handleSlideIn={handleSlideIn} />} // Add Products route
       />
     </Routes>
   );
